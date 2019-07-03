@@ -19,7 +19,6 @@ void DarknetDetector::RescaleBoxes(int ori_w, int ori_h, int num,
                                    detection* dets) {
   int w = ori_w;
   int h = ori_h;
-  std::cout << "num: " << num << std::endl;
   for (int i = 0; i < num; i++) {
     box b = dets[i].bbox;
     int x1 = (b.x - b.w / 2.) * w;

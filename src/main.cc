@@ -62,6 +62,7 @@ int main(int argc, char* argv[]) {
   std::shared_ptr<Detector> detector = std::make_shared<DarknetDetector>();
   std::dynamic_pointer_cast<DarknetDetector>(detector)->SetNetParams(object_thresh, nms_thresh, hier_thresh);
   std::dynamic_pointer_cast<DarknetDetector>(detector)->LoadModel(prototxt, model);
+  LOG(INFO) << "image: " << argv[3];
 
   int rz_w = 416;
   int rz_h = 416;  // 234?
@@ -84,7 +85,6 @@ int main(int argc, char* argv[]) {
         cv::Rect(((rz_w - new_w) / 2), (rz_h - new_h) / 2, new_w, new_h));
     cv::resize(img, image_roi, cv::Size(new_w, new_h));
   }
-
   std::vector<Object> objs;
   NamedObjsMap named_objs_map;
   detector->Detect(rzd_img, w, h, objs);
@@ -103,6 +103,6 @@ int main(int argc, char* argv[]) {
     }
   }
   cv::imshow("disp", img);
-  cv::waitKey(0);
+  cv::waitKey(10000);
   return 1;
 }

@@ -70,7 +70,6 @@ else ()
   target_link_libraries(${PROJECT_NAME}
     ${OpenCV_LIBS}
     ${Darknet_LIB}
-    lua
     glog
     gflags
     -Wl,--no-whole-archive
