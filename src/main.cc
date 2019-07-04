@@ -97,7 +97,9 @@ int main(int argc, char* argv[]) {
       cv::rectangle(img, cv::Rect(obj.x, obj.y, obj.w, obj.h),
                     cv::Scalar(255. / obj.label, 255, 0), 5);
       cv::putText(img, name, cv::Point(obj.x + obj.w / 2, obj.y + obj.h / 2),
-                  cv::FONT_HERSHEY_COMPLEX, 1, 1);
+                  cv::FONT_HERSHEY_COMPLEX, 2, cv::Scalar(255, 0, 0));
+      cv::putText(img, std::to_string(obj.score), cv::Point(obj.x + obj.w / 2, obj.y),
+                  cv::FONT_HERSHEY_COMPLEX, 2, cv::Scalar(255, 0, 0), 2);
     }
   }
   cv::imshow("disp", img);
